@@ -27,8 +27,12 @@ namespace CIS152FinalMcCurdyV1.Models
         // to hold date when customer first
         // created to use as 'joined'/'customer since xxxx' data.
 
-        // ?? create an attribute to hold all customers - in a sorted order? Or which
+        // ?? create an attribute to hold all customers objects - in a sorted order? Or which
         // can then be sorted/searched??
+        //?? create another attribute/property to hold all Customer objects in database in sorted
+        // order - sorted by lastname - then use this for binary search or other search method
+        // private Dictionary<CustomerId, Customer> _sortedCustomers;
+        // private List<Customer> _sortedCustomersList;
 
         // Constructor(s)
         // Default constructor
@@ -82,8 +86,17 @@ namespace CIS152FinalMcCurdyV1.Models
         //[Phone(ErrorMessage = "Phone number is invalid")]
         public string? Phone { get => _phone; set => _phone = value; }
 
+        //?? create another attribute/property to hold all Customer objects in database in sorted
+        // order - sorted by lastname - then use this for binary search or other search method
+        // public Dictionary<CustomerId, Customer> SortedCustomers {get; set;}
+        //public List<Customer> SortedCustomersList {get; set;}
+
+        //public virtual ICollection<Customer> CustomersList { get; set; }
+
 
         // Methods
+        // Write methods to sort/search SortedCustomers (dict) vs SortedCustomersList (List)
+
         public override bool Equals(object? obj)
         {
             return base.Equals(obj);

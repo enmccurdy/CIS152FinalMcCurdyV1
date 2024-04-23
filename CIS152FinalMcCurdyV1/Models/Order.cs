@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Immutable;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CIS152FinalMcCurdyV1.Models
 {
-    public class Order
+    public class Order : IComparable<Order>
     {
         // Fields/attributes
         // Primary key - OrderId
@@ -34,10 +35,11 @@ namespace CIS152FinalMcCurdyV1.Models
         // ?attribute to hold associated foreign key for CustomerID
         // ?? rather than _customer??
         private int _customerId;
-        private int _toDoId;
+        //private int _toDoId;
 
         // ?? eliminate the ToDo model and move the Orders queue data structure
         // into the Order model. ??
+        private Queue<Order> _ordersQueue;
 
 
         // Constructor(s)
@@ -113,7 +115,26 @@ namespace CIS152FinalMcCurdyV1.Models
         public int CustomerId { get => _customerId; set => _customerId = value; }
         //[ForeignKey("ToDo")]
         //[ForeignKey(nameof(ToDoId))]
-        public int? ToDoId { get => _toDoId; set => _toDoId = value.Value; }
+        //public int? ToDoId { get => _toDoId; set => _toDoId = value.Value; }
+        //public Queue<Order>? OrdersQueue { get => _ordersQueue; set => _ordersQueue = value; }
+        public Queue<Order>? OrdersQueue
+        {
+            get { return _ordersQueue; }
+            set
+            {
+                List<Order> ordersList = Orders.ToList();
+                //Orders.Sort();
+                //Orders.ToImmutableSortedDictionary();
+                // Sort all Order object by OrderDate in ascending order then add/enqueue
+                // to OrderQueueu
+                ordersList.Sort();
+                foreach (Order order in ordersList)
+                {
+                    OrdersQueue.Enqueue(order);
+                }
+            }
+        }
+        
 
         // Navigation Properties: 
         // MS learn tutorial on EF MVC used below to hold multiple rows of data associated
@@ -142,9 +163,9 @@ namespace CIS152FinalMcCurdyV1.Models
         public virtual Customer Customer { get; set; }
         //[ForeignKey("ToDo")]
         //[ForeignKey(nameof(ToDoId))]
-        [NotMapped]
-        public virtual ToDo? ToDo { get; set; }
-        
+        //[NotMapped]
+        //public virtual ToDo? ToDo { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
 
         // Methods
         public decimal CalcTotal()
@@ -161,14 +182,73 @@ namespace CIS152FinalMcCurdyV1.Models
             return total;
         }
 
+       
+
+        public string? DisplayOrderQueue()
+        {
+            //return base.ToString();
+            string ToDoOutput = "";
+            //string ToDoOutput = $"ToDo Id: {ToDoId}; ToDo Date: {ToDoDate}; ";
+            if (OrdersQueue != null)
+            {
+
+                ToDoOutput += $"Orders in Queue: {OrdersQueue.Count}/n Orders: /n";
+                foreach (Order order in OrdersQueue)
+                {
+                    ToDoOutput += $"{order.ToString} /n";
+                }
+            }
+            else
+            {
+                ToDoOutput += $"Orders in Queue: none;";
+            }
+            return ToDoOutput;
+        }
+
+        
         public override bool Equals(object? obj)
         {
-            return base.Equals(obj);
+            //return base.Equals(obj);
+            if (obj == null) return false;
+            Order objAsDate = obj as Order;
+            if (objAsDate == null) return false;
+            else return Equals(objAsDate);
+        }
+
+        public int SortByDateAscending(DateTime date1, DateTime date2)
+        {
+            return date1.CompareTo(date2);
+        }
+
+        // Default comparer for Order by OrderDate
+        public int CompareTo(Order compareOrder)
+        {
+            if (compareOrder == null)
+            {
+                return 1;
+            }
+            else
+            {
+                return this.OrderDate.CompareTo(compareOrder.OrderDate);
+            }
         }
 
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+        /*public override DateTime GetHashCode()
+        {
+            //return base.GetHashCode();
+            return OrderDate;
+        }*/
+
+        public bool Equals(Order other)
+        //public override bool Equals(object? obj)
+        {
+            //return base.Equals(obj);
+            if (other == null) return false;
+            return (this.OrderDate.Equals(other.OrderDate));
         }
 
         public override string? ToString()

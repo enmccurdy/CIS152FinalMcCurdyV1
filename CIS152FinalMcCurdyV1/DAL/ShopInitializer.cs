@@ -12,12 +12,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CIS152FinalMcCurdyV1.DAL
 {
-    public class ShopInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<DrinkShopAppContext>
+    public class ShopInitializer //: System.Data.Entity.DropCreateDatabaseIfModelChanges<DrinkShopAppContext>
         //System.Data.Entity.DropCreateDatabaseIfModelChanges<System.Data.Entity.DbContext>
         //System.Data.Entity.DropCreateDatabaseIfModelChanges<DrinkShopAppContext> /*System.Data.Migrations.DropCreateDatabaseIfModelChanges<DrinkShopAppContext>*/
        // System.Data.DropCreateDatabaseIfModelChanges<DrinkShopAppContext>/*System.Data.Entity.DropCreateDatabaseIfModelChanges<DrinkShopAppContext>*/
     {
-        protected override void Seed(DrinkShopAppContext context)
+        /*protected override void Seed(DrinkShopAppContext context)
         {
             var seedDate = new DateTime();
             
@@ -46,7 +46,7 @@ namespace CIS152FinalMcCurdyV1.DAL
             new Order{OrderId=5,OrderDate=(seedDate),CustomerId=5,ToDoId=101},
             new Order{OrderId=6,OrderDate=(seedDate),CustomerId=6,ToDoId=101},
             new Order{OrderId=7,OrderDate=(seedDate),CustomerId=7,ToDoId=101},
-            /*new Order { OrderId = 7, OrderDate = DateTime.Parse("2005-04-01"), CustomerId = 7, ToDoId = 101 }*/
+            *//*new Order { OrderId = 7, OrderDate = DateTime.Parse("2005-04-01"), CustomerId = 7, ToDoId = 101 }*//*
             };
             orders.ForEach(o => context.Order.Add(o));
             context.SaveChanges();
@@ -67,6 +67,6 @@ namespace CIS152FinalMcCurdyV1.DAL
             };
             drinks.ForEach(d => context.Drink.Add(d));
             context.SaveChanges();
-        }
+        }*/
     }
 }

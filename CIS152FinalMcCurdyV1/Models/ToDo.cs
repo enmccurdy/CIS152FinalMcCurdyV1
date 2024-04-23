@@ -7,9 +7,9 @@ namespace CIS152FinalMcCurdyV1.Models
     {
 
         // Fields/attributes
-        private int _toDoId;
+        /*private int _toDoId;
         private DateTime _toDoDate;
-        private Queue<Order> _ordersQueue;
+        private Queue<Order> _ordersQueue;*/
         // See below navigation property needed a virtual ICollection
         // 'Orders' property to hold a List of all the Order
         // objects/entities associated w/ this ToDo entity/object.
@@ -19,7 +19,7 @@ namespace CIS152FinalMcCurdyV1.Models
 
         // Constructor(s)
         // Default constructor
-        public ToDo()
+        /*public ToDo()
         {
             //ToDoId = toDoId;
             // Set ToDoDate to today's date.
@@ -27,19 +27,19 @@ namespace CIS152FinalMcCurdyV1.Models
             //OrdersQueue = ordersQueue;
             // Set OrdersQueue to empty Queue of Order objects. 
             OrdersQueue = new Queue<Order>();
-        }
+        }*/
 
         // Parameterized Constructor(s)
-        public ToDo(DateTime date, Queue<Order> ordersQueue)
+        /*public ToDo(DateTime date, Queue<Order> ordersQueue)
         {
             //ToDoId = toDoId;
             //Date = date;
             ToDoDate = date;
             //ToDoDate = new DateTime();
             OrdersQueue = ordersQueue;
-        }
+        }*/
 
-        public ToDo(Queue<Order> ordersQueue)
+        /*public ToDo(Queue<Order> ordersQueue)
         //public ToDo(DateTime date, Queue<Order> ordersQueue)
         {
             //ToDoId = toDoId;
@@ -47,10 +47,10 @@ namespace CIS152FinalMcCurdyV1.Models
             //ToDoDate = date;
             ToDoDate = new DateTime();
             OrdersQueue = ordersQueue;
-        }
+        }*/
 
         // Properties
-        // If using Entity Framework do not need to specify [Key] as 
+        /*// If using Entity Framework do not need to specify [Key] as 
         // the EF assigns Properties named w/ 'ClassnameId' syntax as the
         // Class's Primary Key automatically. 
         //[Key]
@@ -72,10 +72,10 @@ namespace CIS152FinalMcCurdyV1.Models
         // OrderIds (since OrderId is the Order entity's/object's primary key).  
         [ForeignKey("Order")]
         //[ForeignKey(nameof(OrderId))]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }*/
 
         // Methods
-        public override bool Equals(object? obj)
+        /*public override bool Equals(object? obj)
         {
             return base.Equals(obj);
         }
@@ -103,7 +103,7 @@ namespace CIS152FinalMcCurdyV1.Models
                 ToDoOutput += $"Orders in Queue: none;";
             }
             return ToDoOutput;
-        }
+        }*/
 
     }
 }
