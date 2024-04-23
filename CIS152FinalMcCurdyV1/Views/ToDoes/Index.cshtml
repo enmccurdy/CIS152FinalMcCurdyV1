@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CIS152FinalMcCurdyV1.Models.ToDo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@* <h1>Index</h1> *@
+<div class="text-center pageHeader">
+    <h1 class="display-4">Welcome To CIS152 Drink Shop - ToDoes Index</h1>
+</div>
+
+<p>
+    <a asp-action="Create">Create New ToDo List</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ToDoDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToDoDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ToDoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ToDoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ToDoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

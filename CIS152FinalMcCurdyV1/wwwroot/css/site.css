@@ -1,0 +1,100 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: rgb(78, 144, 241);
+    /*margin-right: auto;
+    margin-left: auto;*/
+    color: darkblue;
+    /*    color: #254473;*/
+}
+
+/* Additional CSS style rules for website */
+/*div.button-group button {*/
+    /*    background-color: #98BDF4;*/
+    /*border: solid 2px #254473;
+    border-radius: 15px;
+    padding: 0.5% 1%;
+    font-weight: bolder;
+    color: #254473;
+}
+
+    div.button-group button:hover {
+        background-color: #98BDF4;
+        color: #254473;
+        color: cornsilk;
+    }*/
+header > nav > a {
+/*header > nav > a.nav-link {*/
+    color: darkblue;
+}
+
+body div.myContainerDiv {
+        width: 90%;
+        margin-right: auto;
+        margin-left: auto;
+}
+
+div.pageHeader h1 {
+    background-image: url(../images/coffee_beans_closeup_pexels-igor-haritanovich.jpg);
+    background-repeat: repeat;
+    background-size: cover;
+    color: lemonchiffon;
+    font-weight: bolder;
+    border: groove 8px lemonchiffon;
+    border: ridge 8px lemonchiffon;
+    border: ridge 8px darkblue;
+    border: ridge 8px chocolate;
+    padding: 2%;
+}
+
+body div.myContainerDiv form {
+    background-color: lemonchiffon;
+    color: darkblue;
+    font-weight: bolder;
+    width: 80%;
+    padding: 1% 2% 1% 2%;
+    margin: 2% auto 1% auto;
+}
+
+body div.myContainerDiv form div.button-group button {
+    background-color: deepskyblue;
+    background-color: lightskyblue;
+    border: solid 2px #254473;
+    border-radius: 15px;
+    padding: 0.5% 1%;
+    font-weight: bolder;
+    color: #254473;
+}
+
+body div.myContainerDiv form div.button-group button:hover {
+    background-color: #98BDF4;
+    color: #254473;
+    /*color: cornsilk;*/
+}
+
+footer {
+    text-align: center;
+}
+
+footer p {
+    margin: 1% auto 1% auto;
+    padding: 2px;
+}

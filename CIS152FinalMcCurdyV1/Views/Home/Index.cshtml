@@ -1,0 +1,78 @@
+﻿@* @model Order *@
+@* Above or (@model CIS152FinalMcCurdyV1.Models.Order) is just importing a single object/model 
+    of Order class (for a details type page)
+    Below is importing a List of all the Order class objects. *@
+@* @model List<CIS152FinalMcCurdyV1.Models.Order> *@
+@* @model List<CIS152FinalMcCurdyV1.Models.ToDo> *@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@* Layout page already has a <div class="container"> and a <main> all of page contents inside the <main> tags *@
+@* <div class="container"> *@
+<div class="text-center pageHeader">
+    <h1 class="display-4">Welcome To CIS152 Drink Shop</h1>
+</div>
+
+@* <form asp-action="Index" method="post"> *@
+<form action="/" method="post">
+    <h3>To create a drink order select if new or returning customer:</h3>
+    <div asp-validation-summary="All" class="form-display"></div>
+    <div class="button-group">
+        <button class="btn btn-info" name="newCustBtn" type="submit">New Customer</button>
+        <button class ="btn btn-info" name="returningCustBtn" type="submit">Return Customer</button>
+        <button class ="btn btn-info" name="resetBtn" type="reset">reset</button>
+        @* <a asp-action="Index">Clear</a> *@
+    </div>
+
+</form>
+    
+
+@* <div class="row"> 
+    @foreach(var item in Model)
+    { *@
+        @* bootstrap abbrev: "col-6" means for this div in this row will use 6 of 12 columns. "d-flex" created a flex box for 
+            its content. 
+        *@
+        @* <div class="col-6">
+            <div >
+                @item.OrderId
+            </div>
+            <div>
+                @item.OrderDate
+            </div>
+            <div>
+                @item.OrderTotal.ToString("N2")
+            </div>
+            <div class="d-flex justify-content-center">
+                @item.ToString()
+            </div> *@
+            @* Can create a button to take user to a details page about this specific Model Order object -
+                good practice? to keep a folder in Views specific to each Model class & the folder will contain
+                an index page for that class and a 'details' page for the specified Object - passing the item's Id
+                when <a> calls the 'Details' page. Bootstrap 'btn-info' is a light blue color.
+            *@
+            @* <div class="d-flex justify-content-center">
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.OrderId">View Order Details</a>
+            </div>
+        </div>
+
+    } *@
+    @* if on a details type page want to loop through Drinks in Order object try below version *@
+    @* <div class="d-flex justify-content-center">
+        Drinks: 
+        <ul>
+            @foreach (var item in Model.Drinks)
+            {
+                <li>
+                    @item.Drink.DrinkId
+                </li>
+            }
+        </ul>
+    </div> *@
+    @* Can add a button to the 'Details' page to redirect back to the 'Index' page. *@
+    @*<div class="d-flex justify-content-center">
+        <a class="btn btn-info" asp-action="Index" >Return to All Orders Page</a>
+    </div>
+</div>*@
+@* </div> *@ @* end <div class="container"> *@
