@@ -1,24 +1,95 @@
 ﻿using CIS152FinalMcCurdyV1.Data;
 using CIS152FinalMcCurdyV1.Models;
-using System.Diagnostics;
+using System;
 using System.Linq;
 using System.Web;
 using System.Collections.Generic;
-using static NuGet.Packaging.PackagingConstants;
 using CIS152FinalMcCurdyV1.Data.Enum;
 using System.Data.Entity;
-using CIS152FinalMcCurdyV1.Models;
-using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore;
+//using DbContext = Microsoft.EntityFrameworkCore.DbContext;
 
 namespace CIS152FinalMcCurdyV1.DAL
 {
-    public class ShopInitializer //: System.Data.Entity.DropCreateDatabaseIfModelChanges<DrinkShopAppContext>
-        //System.Data.Entity.DropCreateDatabaseIfModelChanges<System.Data.Entity.DbContext>
-        //System.Data.Entity.DropCreateDatabaseIfModelChanges<DrinkShopAppContext> /*System.Data.Migrations.DropCreateDatabaseIfModelChanges<DrinkShopAppContext>*/
-       // System.Data.DropCreateDatabaseIfModelChanges<DrinkShopAppContext>/*System.Data.Entity.DropCreateDatabaseIfModelChanges<DrinkShopAppContext>*/
+    public class ShopInitializer //: DropCreateDatabaseIfModelChanges<DrinkShopAppContext>
+    //System.Data.Entity.DropCreateDatabaseIfModelChanges<DbContext>
+    //DropCreateDatabaseIfModelChanges<System.Data.Entity.DbContext>
+    //DropCreateDatabaseIfModelChanges<System.Data.Entity.DbContext>
+    //System.Data.Entity.DropCreateDatabaseIfModelChanges<DrinkShopAppContext>
+    //IDatabaseInitializer<DrinkShopAppContext>
+    //IDatabaseInitializer<System.Data.Entity.DbContext>
+    //System.Data.Entity.DropCreateDatabaseIfModelChanges<System.Data.Entity.DbContext>
+    //System.Data.Entity.DropCreateDatabaseIfModelChanges<DrinkShopAppContext> /*System.Data.Migrations.DropCreateDatabaseIfModelChanges<DrinkShopAppContext>*/
+    // System.Data.DropCreateDatabaseIfModelChanges<DrinkShopAppContext>/*System.Data.Entity.DropCreateDatabaseIfModelChanges<DrinkShopAppContext>*/
     {
+
+        //private readonly DrinkShopAppContext? _context;
+        //private readonly DrinkShopAppContext? context;
+        //public DrinkShopAppContext? context { get; set; }
+        //context type = "CIS152FinalMcCurdyV1.DAL.DrinkShopAppContext, CIS152FinalMcCurdyV1";
+        //databaseInitializer type = "CIS152FinalMcCurdyV1.DAL.DrinkShopAppContext, CIS152FinalMcCurdyV1";
+    
+        /*public ShopInitializer(DrinkShopAppContext context)
+        {
+            _context = context;
+        }*/
+        /*protected override IUnitOfWorkFactory CreateUnitOfWorkFactory()
+        {
+            var dbInitializer = new DropCreateDatabaseIfModelChanges<DbContext>();
+            Database.SetInitializer(dbInitializer);
+
+            return new EntityFrameworkUnitOfWorkFactory(
+                this.GetConnectionString()
+                , this.GetDbModel()
+                );
+        }*/
+        //public static void InitialiseThis(DrinkShopAppContext context)
+        /*public static void InitialiseThis()
+        {
+            //Initialise the database
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SampleWebAppDb>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<System.Data.Entity.DbContext>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DrinkShopAppContext>());
+            //Database.SetInitializer<DrinkShopAppContext>(new DropCreateDatabaseIfModelChanges<DrinkShopAppContext>());
+            //Database.SetInitializer<DrinkShopAppContext>(new DropCreateDatabaseIfModelChanges<DbContext>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<context>());
+        }*/
+
+        /*Database.SetInitializer(new DropCreateDatabaseIfModelChanges<HotelContext>());
+        //Database.SetInitializer(new DropCreateDatabaseAlways<HotelContext>()); // set it if you want to recreate database
+        Context = new HotelContext();
+        //Fill(); // uncomment if you want to fill database with default values
+        ClientsTab.DataContext = new ClientsTabViewModel(Context);
+        RoomsTab.DataContext = new RoomsTabViewModel(Context);*/
+        /*public void InitializeDatabase(System.Data.Entity.DbContext context)
+        {
+            throw new NotImplementedException();
+        }*/
+        /*public void InitializeDatabase(System.Data.Entity.DbContext context)
+        {
+            //throw new NotImplementedException();
+        }*/
+        //System.Data.Entity.Database.SetInitializer<DrinkShopAppContext>(new ShopInitializer());
+        //Database.SetInitializer<DrinkShopAppContext>(new ShopInitializer());
         /*protected override void Seed(DrinkShopAppContext context)
         {
+        }*/
+        public void InitializeDatabase(DrinkShopAppContext context)
+        //protected override void Seed(CIS152FinalMcCurdyV1.Data.DrinkShopAppContext context)
+        //protected override void Seed(DrinkShopAppContext context)
+        {
+            //_context = context;
+            //DrinkShopAppContext context = new DropCreateDatabaseIfModelChanges<DrinkShopAppContext>();
+            //var dbInitializer = new DropCreateDatabaseIfModelChanges<DbContext>();
+            //var dbInitializer = new DropCreateDatabaseIfModelChanges<System.Data.Entity.DbContext>();
+            //var dbInitializer = new DropCreateDatabaseIfModelChanges<DrinkShopAppContext>();
+            //var dbInitializer = new DropCreateDatabaseIfModelChanges<context>();
+            //Database.SetInitializer(dbInitializer);
+            // Database.SetInitializer<EFTestContext>(new DropCreateDatabaseIfModelChanges<EFTestContext>());
+            // Database.SetInitializer(new DropCreateDatabaseAlways<TestContext>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<System.Data.Entity.DbContext>());
+            //Database.SetInitializer<DrinkShopAppContext>(new DropCreateDatabaseIfModelChanges<DrinkShopAppContext>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DrinkShopAppContext>());
             var seedDate = new DateTime();
             
             //var customer = new List<Customer>
@@ -39,17 +110,26 @@ namespace CIS152FinalMcCurdyV1.DAL
             context.SaveChanges();
             var orders = new List<Order>
             {
-            new Order{OrderId=1,OrderDate=seedDate,CustomerId=1,ToDoId=101},
-            new Order{OrderId=2,OrderDate=(seedDate),CustomerId=2,ToDoId=101},
-            new Order{OrderId=3,OrderDate=(seedDate),CustomerId=3,ToDoId=101},
-            new Order{OrderId=4,OrderDate=(seedDate),CustomerId=4,ToDoId=101},
-            new Order{OrderId=5,OrderDate=(seedDate),CustomerId=5,ToDoId=101},
-            new Order{OrderId=6,OrderDate=(seedDate),CustomerId=6,ToDoId=101},
-            new Order{OrderId=7,OrderDate=(seedDate),CustomerId=7,ToDoId=101},
-            *//*new Order { OrderId = 7, OrderDate = DateTime.Parse("2005-04-01"), CustomerId = 7, ToDoId = 101 }*//*
+                /*new Order{OrderId=1,OrderDate=seedDate,CustomerId=1,ToDoId=101},
+                new Order{OrderId=2,OrderDate=(seedDate),CustomerId=2,ToDoId=101},
+                new Order{OrderId=3,OrderDate=(seedDate),CustomerId=3,ToDoId=101},
+                new Order{OrderId=4,OrderDate=(seedDate),CustomerId=4,ToDoId=101},
+                new Order{OrderId=5,OrderDate=(seedDate),CustomerId=5,ToDoId=101},
+                new Order{OrderId=6,OrderDate=(seedDate),CustomerId=6,ToDoId=101},
+                new Order{OrderId=7,OrderDate=(seedDate),CustomerId=7,ToDoId=101},
+                */
+                new Order{OrderId=1,OrderDate=seedDate,CustomerId=1},
+                new Order{OrderId=2,OrderDate=(new DateTime()),CustomerId=2},
+                new Order { OrderId = 3, OrderDate = (new DateTime()), CustomerId = 3},
+                new Order { OrderId = 4, OrderDate = (new DateTime()), CustomerId = 4},
+                new Order { OrderId = 5, OrderDate = (new DateTime()), CustomerId = 5},
+                new Order { OrderId = 6, OrderDate = (new DateTime()), CustomerId = 6},
+                new Order { OrderId = 7, OrderDate = (new DateTime()), CustomerId = 7},
+                /*new Order { OrderId = 7, OrderDate = DateTime.Parse("2005-04-01"), CustomerId = 7, ToDoId = 101 }*/
             };
             orders.ForEach(o => context.Order.Add(o));
             context.SaveChanges();
+
             var drinks = new List<Drink>
             {
             new Drink{DrinkId=101,OrderId=1,DrinkName=DrinkName.WhiteChocolateMocha, DrinkType="coffee", DrinkSize="regular"},
@@ -67,6 +147,7 @@ namespace CIS152FinalMcCurdyV1.DAL
             };
             drinks.ForEach(d => context.Drink.Add(d));
             context.SaveChanges();
-        }*/
+        }
+
     }
 }

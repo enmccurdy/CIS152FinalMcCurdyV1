@@ -1,4 +1,7 @@
-﻿using CIS152FinalMcCurdyV1.Data;
+﻿using CIS152FinalMcCurdyV1.DAL;
+using CIS152FinalMcCurdyV1.Data;
+using CIS152FinalMcCurdyV1.Data.Enum;
+using CIS152FinalMcCurdyV1.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,6 +25,20 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+/*using (var context = new DrinkShopAppContext())
+{
+    //System.Data.Entity.Database.SetInitializer<DrinkShopAppContext>(new ShopInitializer());
+    //System.Data.Entity.Database.SetInitializer<DrinkShopAppContext>(new ShopInitializer());
+    System.Data.Entity.Database.SetInitializer(new ShopInitializer());
+}*/
+
+/*using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    SeedData.Initialize(services);
+}*/
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -41,4 +58,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+
+
 app.Run();
+

@@ -32,6 +32,46 @@ namespace CIS152FinalMcCurdyV1.Data
         public DbSet<CIS152FinalMcCurdyV1.Models.Order> Orders { get; set; } = default!;
 
         public DbSet<CIS152FinalMcCurdyV1.Models.ToDo> ToDoes { get; set; } = default!;*/
+        
+        /*public override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);*/
 
+            /*modelBuilder.Entity<Customer>()
+                .ToTable("Customer");
+            modelBuilder.Entity<Customer>()
+                .Property(x => x.CustomerId);*/
+
+
+            /*modelBuilder.Entity<Order>()
+                .ToTable("Order");
+            modelBuilder.Entity<Drink>()
+                .ToTable("Drink");*/
+
+
+            //var customer = new List<Customer>
+            /*var customers = new List<Customer>
+                {
+                new Customer{FirstName="Carsons",LastName="Alexa",Email="acarson@fake.edu", Phone="222-444-5555"},
+                new Customer{FirstName="Meridian",LastName="Andrea",Email="ameridian@fake.edu"},
+                new Customer{FirstName="Archibalt",LastName="Arturo",Email="aarchibalt@fake.edu", Phone="222-555-8855"},
+                new Customer{FirstName="Baracus",LastName="BA",Email="babaracus@fake.edu"},
+                new Customer{FirstName="Yang",LastName="Ying",Email="yyang@fake.edu", Phone="222-333-4455"},
+                new Customer{FirstName="Prevails",LastName="Justice",Email="jprevails@fake.edu"},
+                new Customer{FirstName="Oswald",LastName="Norman",Email="greengoblin@fake.org", Phone="222-222-3535"},
+                new Customer{FirstName="Twist",LastName="Oliver",Email="otwist@fake.edu"}
+                };
+            
+            modelBuilder.Entity<Customer>().HasData(customers);*/
+            //modelBuilder.Entity<Customer>().HasData(customers.ForEach(c => Customer.Add(c)););
+
+            //customer.ForEach(c => context.Customer.Add(c));
+            /*customers.ForEach(c => context.Customer.Add(c));
+            context.SaveChanges();*/
+            /*customers.ForEach(c => Customer.Add(c));
+            SaveChanges();
+
+            //base.OnModelCreating(modelBuilder);
+        }*/
     }
 }
